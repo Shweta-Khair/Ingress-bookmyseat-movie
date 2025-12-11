@@ -16,8 +16,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
+
+//New changes CORS
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin(
+        origins = {
+                "https://main.d20avnkha3gw9q.amplifyapp.com",
+                "https://bookmyseat.dockeroncloud.com"
+        },
+        allowedHeaders = "*",
+        methods = {
+                RequestMethod.GET,
+                RequestMethod.HEAD,
+                RequestMethod.OPTIONS
+        }
+)
 
 @RestController
 @RequestMapping("/api/v1")
