@@ -5,17 +5,16 @@ metadata:
   name: {{ .Values.ingress.name }}
   namespace: {{ .Values.namespace.name }}
   annotations:
-    kubernetes.io/ingress.class: alb  # Legacy fallback (className is preferred)
     {{- range $key, $value := .Values.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
-  ingressClassName: {{ .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.ingressClassName }}
   {{- if .Values.ingress.tls.enabled }}
   tls:
     - hosts:
         - {{ .Values.ingress.host }}
-      secretName: bookmyseat-tls-secret  # Optional if using ACM (ALB terminates TLS)
+      # secretName not required for ALB (ACM handles TLS)
   {{- end }}
   rules:
     - host: {{ .Values.ingress.host }}
