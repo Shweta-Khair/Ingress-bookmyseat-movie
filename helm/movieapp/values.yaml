@@ -79,6 +79,11 @@ ingress:
       pathType: Prefix
       serviceName: movie-service
       servicePort: 8081  
+
+    - path: /api/v1/reviews
+      pathType: Prefix
+      serviceName: review-service
+      servicePort: 8082  
     
     # Optional: WAF, security groups, etc.
     # Add any annotations you need for your ingress controller
