@@ -65,7 +65,8 @@ ingress:
   host: bookmyseat.dockeroncloud.com
   #path: /
   pathType: Prefix
-  className: alb  # Change this to match your ingress controller (nginx, traefik, etc.)
+  ingressClassName: alb
+  #className: alb  # Change this to match your ingress controller (nginx, traefik, etc.)
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip  # Direct to pods (efficient on EKS)
